@@ -12,6 +12,12 @@
       "hash": "QmUNRdBcuEx5oDZpbn8ZvJf8n1nc6S6K1qjdmr85xDawaX",
       "name": "muxado",
       "version": "0.0.0"
+    },
+    {
+      "author": "whyrusleeping",
+      "hash": "Qmb1US8uyZeEpMyc56wVZy2cDFdQjNFojAUYVCoo9ieTqp",
+      "name": "go-stream-muxer",
+      "version": "1.0.0"
     }
   ],
   "gxVersion": "0.7.0",
