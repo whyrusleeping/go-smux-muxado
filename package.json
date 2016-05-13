@@ -1,0 +1,22 @@
+{
+  "author": "whyrusleeping",
+  "bugs": {
+    "url": "https://github.com/whyrusleeping/go-smux-muxado"
+  },
+  "gx": {
+    "dvcsimport": "github.com/whyrusleeping/go-smux-muxado"
+  },
+  "gxDependencies": [
+    {
+      "author": "whyrusleeping",
+      "hash": "QmUNRdBcuEx5oDZpbn8ZvJf8n1nc6S6K1qjdmr85xDawaX",
+      "name": "muxado",
+      "version": "0.0.0"
+    }
+  ],
+  "gxVersion": "0.7.0",
+  "language": "go",
+  "license": "",
+  "name": "go-smux-muxado",
+  "version": "0.0.0"
+}
