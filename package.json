@@ -15,9 +15,9 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "Qmb1US8uyZeEpMyc56wVZy2cDFdQjNFojAUYVCoo9ieTqp",
+      "hash": "QmYsbrKfXboT5A5Zvh9YW7oPMpV4kNKFkx9bmanZRKj19y",
       "name": "go-stream-muxer",
-      "version": "1.0.0"
+      "version": "2.0.0"
     }
   ],
   "gxVersion": "0.7.0",
@@ -26,3 +26,4 @@
   "name": "go-smux-muxado",
   "version": "1.0.0"
 }
+
