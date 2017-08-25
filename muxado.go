@@ -2,9 +2,10 @@ package peerstream_muxado
 
 import (
 	"net"
+	"time"
 
 	muxado "github.com/inconshreveable/muxado"
-	smux "github.com/jbenet/go-stream-muxer"
+	smux "github.com/libp2p/go-stream-muxer"
 )
 
 // stream implements smux.Stream using a ss.Stream
@@ -25,8 +26,26 @@ func (s *stream) Write(buf []byte) (int, error) {
 }
 
 func (s *stream) Close() error {
+	return s.ms.CloseWrite()
+}
+
+func (s *stream) Reset() error {
 	return s.ms.Close()
 }
+
+func (s *stream) SetDeadline(t time.Time) error {
+	return s.ms.SetDeadline(t)
+}
+
+func (s *stream) SetReadDeadline(t time.Time) error {
+	return s.ms.SetReadDeadline(t)
+}
+
+func (s *stream) SetWriteDeadline(t time.Time) error {
+	return s.ms.SetWriteDeadline(t)
+}
+
+var _ smux.Stream = (*stream)(nil)
 
 // Conn is a connection to a remote peer.
 type conn struct {
@@ -71,18 +90,6 @@ func (c *conn) AcceptStream() (smux.Stream, error) {
 	return &stream{ms: s}, nil
 }
 
-// Serve starts listening for incoming requests and handles them
-// using given StreamHandler
-func (c *conn) Serve(handler smux.StreamHandler) {
-	for { // accept loop
-		s, err := c.AcceptStream()
-		if err != nil {
-			return // err always means closed.
-		}
-		go handler(s)
-	}
-}
-
 type transport muxado.Config
 
 // Transport is a go-peerstream transport that constructs
@@ -92,12 +99,12 @@ var Transport = &transport{
 	MaxWindowSize: 256 * 1 << 10,
 }
 
-func (t transport) NewConn(nc net.Conn, isServer bool) (smux.Conn, error) {
+func (t *transport) NewConn(nc net.Conn, isServer bool) (smux.Conn, error) {
 	var s muxado.Session
 	if isServer {
-		s = muxado.Server(nc, (*muxado.Config)(&t))
+		s = muxado.Server(nc, (*muxado.Config)(t))
 	} else {
-		s = muxado.Client(nc, (*muxado.Config)(&t))
+		s = muxado.Client(nc, (*muxado.Config)(t))
 	}
 	cl := make(chan struct{})
 	go func() {

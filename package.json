@@ -15,14 +15,15 @@
     },
     {
       "author": "whyrusleeping",
-      "hash": "Qmb1US8uyZeEpMyc56wVZy2cDFdQjNFojAUYVCoo9ieTqp",
+      "hash": "QmY9JXR3FupnYAYJWK9aMr9bCpqWKcToQ1tz8DVGTrHpHw",
       "name": "go-stream-muxer",
-      "version": "1.0.0"
+      "version": "3.0.0"
     }
   ],
   "gxVersion": "0.7.0",
   "language": "go",
   "license": "",
   "name": "go-smux-muxado",
-  "version": "1.0.0"
+  "version": "2.0.0"
 }
+
